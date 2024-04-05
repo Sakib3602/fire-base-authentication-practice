@@ -9,6 +9,7 @@ import Blog from "./components/Blog";
 import Destination from "./components/Destination";
 import AuthProvider from "./components/AuthProvider";
 import Hero from "./components/Hero";
+import MakePrivate from "./components/MakePrivate";
 
 const router = createBrowserRouter([
   {
@@ -27,17 +28,16 @@ const router = createBrowserRouter([
         path: "/register",
         element: <Register></Register>,
       },
-      {
-        path: "/register",
-        element: <Register></Register>,
-      },
+      
       {
         path: "/blog",
         element: <Blog></Blog>,
       },
       {
         path: "/destination",
-        element: <Destination></Destination>,
+        element: <MakePrivate>
+          <Destination></Destination>
+        </MakePrivate>,
       },
     ],
   },
