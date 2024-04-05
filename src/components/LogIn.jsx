@@ -1,10 +1,11 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "./AuthProvider";
-
+import {  useNavigate,useLocation } from "react-router-dom";
 const LogIn = () => {
-  const { logInHere, google, git } = useContext(AuthContext);
+  const { logInHere, google, git, person } = useContext(AuthContext);
   const [error, setError] = useState();
+  const navigate = useNavigate()
 
   function handle(e) {
     e.preventDefault();
@@ -32,15 +33,22 @@ const LogIn = () => {
         // ...
       });
   }
-  function GitHandle(){
+  function GitHandle() {
     git()
-    .then((result) => {
-     
-    }).catch((error) => {
-     setError(error.message)
-    });
-
+      .then((result) => {})
+      .catch((error) => {
+        setError(error.message);
+      });
   }
+
+  const location = useLocation();
+  console.log(location)
+  useEffect(() => {
+    if (person) {
+      navigate(location.state);
+      
+    }
+  }, [person]);
   return (
     <div className="hero h-[630px] bg-yellow-300 rounded-3xl">
       <div className="hero-content flex-col lg:flex-row-reverse">

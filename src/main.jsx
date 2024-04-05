@@ -28,16 +28,18 @@ const router = createBrowserRouter([
         path: "/register",
         element: <Register></Register>,
       },
-      
+
       {
         path: "/blog",
         element: <Blog></Blog>,
       },
       {
         path: "/destination",
-        element: <MakePrivate>
-          <Destination></Destination>
-        </MakePrivate>,
+        element: (
+          <MakePrivate>
+            <Destination></Destination>
+          </MakePrivate>
+        ),
       },
     ],
   },
